@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env DOTENV_CONFIG_PATH=.env.local nodemon --exec ts-node -r dotenv/config -r tsconfig-paths/register src/app.ts",
-    "start": "cross-env DOTENV_CONFIG_PATH=.env.local node -r dotenv/config -r tsconfig-paths/register dist/app.js",
+    "start": "node -r dotenv/config -r tsconfig-paths/register dist/app.js",
+    "start:local": "cross-env DOTENV_CONFIG_PATH=.env.local node -r dotenv/config -r tsconfig-paths/register dist/app.js",
     "build": "tsc",
+    "vercel-build": "npm run build",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [],
@@ -23,7 +25,9 @@
     "swagger-ui-express": "^5.0.1",
     "uuid": "^10.0.0",
     "web-push": "^3.6.6",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "typescript": "^5.3.3",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -35,7 +39,7 @@
     "@types/web-push": "^3.6.3",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
-    "cross-env": "^10.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
@@ -45,8 +49,6 @@
     "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^3.0.2",
     "prettier": "^3.2.1",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.3.3"
+    "ts-node": "^10.9.2"
   }
 }

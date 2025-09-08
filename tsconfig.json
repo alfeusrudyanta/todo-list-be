@@ -3,11 +3,18 @@
     "target": "ES2020",
     "module": "CommonJS",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*", "node_modules/*"]
+    },
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", ".eslintrc.js"]
+  "include": ["src/**/*.ts", ".eslintrc.js"],
+  "exclude": ["node_modules", "dist"]
 }

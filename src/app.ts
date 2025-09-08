@@ -86,6 +86,15 @@ export const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "Todo API is running!", 
+    version: "1.0.0",
+    docs: "/api-docs" 
+  });
+});
+
 app.use(
   "/swagger-ui.css",
   express.static(path.join(__dirname, "css/swagger-ui.css"))
@@ -109,7 +118,12 @@ app.use(
 
 app.use("/todos", todosRouter);
 
-app.listen(8080, () => {
-  console.log("Server running on port 8080");
-  console.log("Swagger docs available at http://localhost:8080/api-docs");
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
 });
+
+// Export untuk Vercel
+export default app;
