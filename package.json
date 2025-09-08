@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "DOTENV_CONFIG_PATH=.env.local nodemon --exec ts-node -r dotenv/config -r tsconfig-paths/register src/app.ts",
-    "start": "DOTENV_CONFIG_PATH=.env.local node -r dotenv/config -r tsconfig-paths/register dist/app.js",
+    "dev": "cross-env DOTENV_CONFIG_PATH=.env.local nodemon --exec ts-node -r dotenv/config -r tsconfig-paths/register src/app.ts",
+    "start": "cross-env DOTENV_CONFIG_PATH=.env.local node -r dotenv/config -r tsconfig-paths/register dist/app.js",
     "build": "tsc",
     "lint": "eslint . --ext .ts"
   },
@@ -35,6 +35,7 @@
     "@types/web-push": "^3.6.3",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
+    "cross-env": "^10.0.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
