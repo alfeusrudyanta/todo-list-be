@@ -35,10 +35,6 @@ Go to: [Vercel Dashboard](https://vercel.com/dashboard) → Your Project → Set
 
 **Required Variables:**
 ```
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=your-aws-access-key-here
-AWS_SECRET_ACCESS_KEY=your-secret-access-key-here
-CLERK_SECRET_KEY=your-clerk-secret-key-here
 API_KEY=0ICVyrNhPL56Oss58qv-_y42PhSQvYcPm6Vz26j4bNw
 ```
 
