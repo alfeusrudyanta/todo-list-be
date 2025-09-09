@@ -37,6 +37,11 @@ const router = express.Router();
  *           format: date-time
  *         description: Filter todos with date <= this value (ISO 8601).
  *       - in: query
+ *         name: title
+ *         schema:
+ *           type: string
+ *         description: Search todos by title (case-insensitive).
+ *       - in: query
  *         name: page
  *         schema:
  *           type: integer
@@ -133,6 +138,7 @@ router.get("/", async (req, res) => {
       priority,
       dateGte,
       dateLte,
+      title, // ← Tambahkan ini
       page = 1,
       limit = 10,
       sort = "date",
@@ -158,6 +164,14 @@ router.get("/", async (req, res) => {
     if (dateLte) {
       const d = new Date(String(dateLte));
       todos = todos.filter((t) => t.date <= d);
+    }
+
+    // Tambahkan search filter
+    if (title && String(title).trim()) {
+      const searchTerm = String(title).toLowerCase();
+      todos = todos.filter((t) => 
+        t.title.toLowerCase().includes(searchTerm)
+      );
     }
 
     // sorting
